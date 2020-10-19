@@ -14,7 +14,7 @@ import jwt
 
 
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -30,4 +30,18 @@ class BugViewsetAPI(viewsets.ModelViewSet):
 class ExpenseViewsetAPI(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
-    
+
+class UserViewSetAPI(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class MonthlyExpenseViewSetAPI(RetrieveAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = MonthlyExpenseSerializer
+
+    def retrieve(self,request,*args,**kwargs):
+
+        user = self.queryset.get(user=kwargs["id"])
+        serializer = self.serializer_class(user)
+        return Response(serializer.data)
