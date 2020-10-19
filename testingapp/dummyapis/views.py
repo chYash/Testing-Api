@@ -42,6 +42,6 @@ class MonthlyExpenseViewSetAPI(RetrieveAPIView):
 
     def retrieve(self,request,*args,**kwargs):
 
-        user = self.queryset.get(user=kwargs["id"])
+        user = self.queryset.get(id=kwargs["id"])
         serializer = self.serializer_class(user)
         return Response(serializer.data)

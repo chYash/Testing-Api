@@ -26,7 +26,7 @@ SECRET_KEY = '54)ic6ot3n)&*)cb0i9^x2f_cnnc!$24lp#$ww7i7fbz_)=kpg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost","testing-api-screen.herokuapp.com"]
 
 
 # Application definition
